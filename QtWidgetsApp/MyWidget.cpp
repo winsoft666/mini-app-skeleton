@@ -1,5 +1,6 @@
 #include "MyWidget.h"
 #include <QPainter>
+#include <QDebug>
 
 MyWidget::MyWidget(QWidget* parent /*= Q_NULLPTR*/) :
     QWidget(parent) {
@@ -8,11 +9,11 @@ MyWidget::MyWidget(QWidget* parent /*= Q_NULLPTR*/) :
 void MyWidget::paintEvent(QPaintEvent* e) {
     QPainter painter(this);
     painter.setRenderHints(QPainter::SmoothPixmapTransform |
+                           QPainter::LosslessImageRendering |
                            QPainter::TextAntialiasing |
-                           QPainter::Antialiasing |
-                           QPainter::LosslessImageRendering);
+                           QPainter::Antialiasing);
 
     painter.save();
-    painter.fillRect(rect(), QColor(133, 133, 133));
+
     painter.restore();
 }
